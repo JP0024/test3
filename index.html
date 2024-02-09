@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+	<meta charset="UTF-8">
+	<title>App</title>
+	<meta name="description" content="Kurzbeschreibung">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=M+PLUS+1p">
+</head>
+<script>
+function toggleDivs() {
+  const mainMenu = document.getElementById("main-menu");
+  const quiz = document.getElementById("quiz");
+
+  // Main-Menu ausblenden
+  mainMenu.style.visibility = "hidden";
+
+  // Quiz einblenden
+  quiz.style.visibility = "visible";
+}
+</script>
+
+<style>
+
+#quiz {
+	visibility: hidden;
+	position: absolute;
+	top: 15px;
+	font-size: 8vw;
+}
+
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	background: #121212;
+	color: white;
+  }
+
+#streak {
+	font-size: 15vw;
+}
+
+.calendar-wrapper {
+
+	margin: 7vw;
+  font-size: 7vw;
+}
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.first-day {
+  grid-column-start: 3;
+
+}
+
+
+.day-name {
+  background: #eee;
+}
+
+h1 {
+  text-align: center;
+}
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+li {
+  padding: 2px;
+	color: grey;
+}
+
+
+#startBtn {
+	margin: 15vw;
+}
+
+#UserName {
+	font-style: italic;
+}
+
+.floating {
+	font-size: 5em;
+    animation-name: floating;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    margin-left: 30px;
+    margin-top: 5px;
+}
+
+@keyframes floating {
+    0% { transform: translate(0,  0px); }
+    50%  { transform: translate(0, 15px); }
+    100%   { transform: translate(0, -0px); }
+}
+
+#quiz {
+	position: absolute;
+  top: 20vw;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  height: 20vw;
+	max-height: 400px;
+  border: none;
+  }
+
+#question {
+	font-size: 7vw;
+	margin-bottom: 10px;
+}
+
+#answers {
+	list-style: none;
+	padding: 0;
+	color: white;
+	background: #121212;
+}
+
+#answers li {
+	margin-bottom: 10px;
+	padding: 20px;
+	border: 1px solid white;
+	border-radius: 5px;
+	color: white;
+	background: #121212;
+}
+
+#next-question {
+	margin-top: 10px;
+	padding: 0px 0px;
+	font-size: 10vw;
+	border: 1px solid #121212;
+	border-radius: 5px;
+	cursor: pointer;
+	color: white;
+	background: #121212;
+}
+
+#rocket-explosion-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.rocket-explosion {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background-color: #f00;
+  animation: rocket-explosion 3s linear infinite;
+}
+
+@keyframes rocket-explosion {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+
+  25% {
+    width: 100px;
+    height: 100px;
+    opacity: 0.8;
+  }
+
+  50% {
+    width: 200px;
+    height: 200px;
+    opacity: 0.6;
+  }
+
+  75% {
+    width: 300px;
+    height: 300px;
+    opacity: 0.4;
+  }
+
+  100% {
+    width: 400px;
+    height: 400px;
+    opacity: 0;
+  }
+}
+
+.spark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #fff;
+  animation: spark 2s linear infinite;
+}
+
+@keyframes spark {
+  0% {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+
+  50% {
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    opacity: 0.8;
+  }
+
+  100% {
+    top: -100px;
+    left: -100px;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+  }
+}
+
+#poweredBy {
+	position: absolute;
+	bottom: 5vw;
+	height: 5vw;
+	width: 5vw;
+}
+
+</style>
+<body>
+	<div id="main-menu">
+<container id="statusbar">
+<a id="streak">
+	<center>
+		<br>
+		🔥 <strong><b id="Streak.Value">1</b></strong>
+</a>
+</container>
+<br>
+<div class="calendar-wrapper">
+	<br>
+<strong>
+  <ol class="calendar">
+
+
+    <li class="first-day" style="color: white;">1</li>
+
+    <li style="color: white;">2</li>
+    <li style="color: white;">3</li>
+    <li style="color: white;">4</li>
+    <li style="color: white;">5</li>
+    <li style="color: white;">6</li>
+    <li style="color: white;">7</li>
+    <li style="color: white;">8</li>
+    <li style="color: white;">9</li>
+    <li style="color: white;">10</li>
+    <li style="color: white;">11</li>
+    <li style="color: white;">12</li>
+    <li style="color: white;">13</li>
+    <li style="color: white;">14</li>
+    <li style="color: white;">15</li>
+    <li style="color: white;">16</li>
+    <li>17</li>
+    <li>18</li>
+    <li>19</li>
+    <li>20</li>
+    <li>21</li>
+    <li>22</li>
+    <li>23</li>
+    <li>24</li>
+    <li>25</li>
+    <li>26</li>
+    <li>27</li>
+    <li>28</li>
+    <li>29</li>
+    <li>30</li>
+    <li>31</li>
+  </ol>
+</div>
+<br>
+<div id="startBtn">Guten Tag <a id="UserName">Sinikka.</a><br>Schön, dass du da bist! Pushe deinen Streak<br><br><div onclick="toggleDivs()" class="floating">➜</div></a></div>
+</strong>
+</div>
+<div id="quiz">
+  <h1>Quiz</h1>
+  <p id="question"></p>
+  <ul id="answers"></ul>
+  <p id="feedback"></p>
+  <center>
+    <button id="next-question" class="floating">➜</button>
+
+  </center>
+	<div id="confetti-container"></div>
+  <script>
+	// Array mit Fragen und Antworten
+	const questions = [
+	  {
+	    question: "Welche Hauptstadt hat Frankreich?",
+	    answers: ["Berlin", "Paris", "Rom", "Madrid"],
+	    correctAnswer: "Paris",
+	  },
+	  {
+	    question: "Wie viele Beine hat ein Oktopus?",
+	    answers: ["4", "6", "8", "10"],
+	    correctAnswer: "8",
+	  },
+		{
+	    question: "Welche Hauptstadt hat Deutschland?",
+	    answers: ["Berlin", "Paris", "Rom", "Madrid"],
+	    correctAnswer: "Berlin",
+	  },
+		{
+	    question: "Welche Hauptstadt hat Groß-Britannien?",
+	    answers: ["London", "Paris", "Rom", "Madrid"],
+	    correctAnswer: "London",
+	  },
+		{
+	    question: "Welche Hauptstadt hat Deutschland?",
+	    answers: ["Berlin", "Paris", "Rom", "Madrid"],
+	    correctAnswer: "Berlin",
+	  },
+	  // ... weitere Fragen
+	];
+
+	// Variablen für aktuelle Frage, Antwort und Fragezähler
+	let currentQuestionIndex = 0;
+	let selectedAnswer = null;
+	let questionCount = 0;
+
+	const maxQuestions = 2; // Maximale Anzahl der Fragen
+
+	// Zufällige Frage auswählen
+	function getRandomQuestion() {
+	  return questions[Math.floor(Math.random() * questions.length)];
+	}
+
+	// Frage und Antworten im HTML anzeigen
+	function showQuestion(question) {
+	  document.getElementById("question").textContent = question.question;
+	  const answerList = document.getElementById("answers");
+	  answerList.innerHTML = "";
+	  for (const answer of question.answers) {
+	    const answerElement = document.createElement("li");
+	    answerElement.textContent = answer;
+	    answerElement.addEventListener("click", function () {
+	      selectedAnswer = this.textContent; // Zugriff auf Text der angeklickten Antwort
+	      evaluateAnswer(selectedAnswer, question.correctAnswer);
+	    });
+	    answerList.appendChild(answerElement);
+	  }
+	}
+
+	// Funktion zum Auswerten der Antwort
+	function evaluateAnswer(selectedAnswer, correctAnswer) {
+	  const feedbackElement = document.getElementById("feedback");
+
+	  if (selectedAnswer === correctAnswer) {
+	    document.getElementById("feedback").textContent = "Richtig";
+	  } else {
+	    document.getElementById("feedback").textContent = "Falsch. Die richtige Antwort ist " + correctAnswer;
+	  }
+	}
+
+	// Event-Listener für "Nächste Frage"-Button
+	document.getElementById("next-question").addEventListener("click", () => {
+	  // ... Code für die Auswertung der aktuellen Frage ...
+
+	  questionCount++;
+	  if (questionCount < maxQuestions) {
+	    currentQuestionIndex++;
+	    showQuestion(getRandomQuestion());
+	    document.getElementById("feedback").textContent = ""; // Feedback nach Beantwortung der Frage zurücksetzen
+	  } else {
+	    // Quiz beenden
+	    // ... Code für die Anzeige des Ergebnisses einfügen ...
+			location.reload();
+	  }
+	});
+
+	// Start mit erster Frage
+	showQuestion(getRandomQuestion());
+
+  </script>
+
+</div>
+
+</body>
+</html>

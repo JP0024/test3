@@ -292,104 +292,107 @@ li {
 <div id="startBtn">Guten Tag <a id="UserName">Sinikka.</a><br>Schön, dass du da bist! Pushe deinen Streak<br></a></div><div onclick="toggleDivs()" class="floating">➜</div>
 </strong>
 </div>
-<div id="quiz">
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz mit Timer</title>
+</head>
+<body>
   <h1>Quiz</h1>
   <p id="question"></p>
   <ul id="answers"></ul>
   <p id="feedback"></p>
-  <center>
-    <button id="next-question" class="floating">➜</button>
+  <p id="timer"></p>
+  <button id="next-question">Nächste Frage</button>
 
-  </center>
-	<div id="confetti-container"></div>
   <script>
-	// Array mit Fragen und Antworten
-	const questions = [
-	  {
-	    question: "Welche Hauptstadt hat Frankreich?",
-	    answers: ["Berlin", "Paris", "Rom", "Madrid"],
-	    correctAnswer: "Paris",
-	  },
-	  {
-	    question: "Wie viele Beine hat ein Oktopus?",
-	    answers: ["4", "6", "8", "10"],
-	    correctAnswer: "8",
-	  },
-		{
-	    question: "Welche Hauptstadt hat Deutschland?",
-	    answers: ["Berlin", "Paris", "Rom", "Madrid"],
-	    correctAnswer: "Berlin",
-	  },
-		{
-	    question: "Welche Hauptstadt hat Groß-Britannien?",
-	    answers: ["London", "Paris", "Rom", "Madrid"],
-	    correctAnswer: "London",
-	  },
-		{
-	    question: "Welche Hauptstadt hat Deutschland?",
-	    answers: ["Berlin", "Paris", "Rom", "Madrid"],
-	    correctAnswer: "Berlin",
-	  },
-	  // ... weitere Fragen
-	];
+  // Array mit Fragen und Antworten
+  const questions = [
+    {
+      question: "Welche Hauptstadt hat Frankreich?",
+      answers: ["Berlin", "Paris", "Rom", "Madrid"],
+      correctAnswer: "Paris",
+    },
+    {
+      question: "Wie viele Beine hat ein Oktopus?",
+      answers: ["4", "6", "8", "10"],
+      correctAnswer: "8",
+    },
+    // ... weitere Fragen
+  ];
 
-	// Variablen für aktuelle Frage, Antwort und Fragezähler
-	let currentQuestionIndex = 0;
-	let selectedAnswer = null;
-	let questionCount = 0;
+  // Variablen für aktuelle Frage, Antwort, Fragezähler und Zeit
+  let currentQuestionIndex = 0;
+  let selectedAnswer = null;
+  let questionCount = 0;
+  let timeLeft = 900; // 15 Minuten in Sekunden
 
-	const maxQuestions = 2; // Maximale Anzahl der Fragen
+  const maxQuestions = 2; // Maximale Anzahl der Fragen
 
-	// Zufällige Frage auswählen
-	function getRandomQuestion() {
-	  return questions[Math.floor(Math.random() * questions.length)];
-	}
+  // Zufällige Frage auswählen
+  function getRandomQuestion() {
+    return questions[Math.floor(Math.random() * questions.length)];
+  }
 
-	// Frage und Antworten im HTML anzeigen
-	function showQuestion(question) {
-	  document.getElementById("question").textContent = question.question;
-	  const answerList = document.getElementById("answers");
-	  answerList.innerHTML = "";
-	  for (const answer of question.answers) {
-	    const answerElement = document.createElement("li");
-	    answerElement.textContent = answer;
-	    answerElement.addEventListener("click", function () {
-	      selectedAnswer = this.textContent; // Zugriff auf Text der angeklickten Antwort
-	      evaluateAnswer(selectedAnswer, question.correctAnswer);
-	    });
-	    answerList.appendChild(answerElement);
-	  }
-	}
+  // Frage und Antworten im HTML anzeigen
+  function showQuestion(question) {
+    document.getElementById("question").textContent = question.question;
+    const answerList = document.getElementById("answers");
+    answerList.innerHTML = "";
+    for (const answer of question.answers) {
+      const answerElement = document.createElement("li");
+      answerElement.textContent = answer;
+      answerElement.addEventListener("click", function () {
+        selectedAnswer = this.textContent; // Zugriff auf Text der angeklickten Antwort
+        evaluateAnswer(selectedAnswer, question.correctAnswer);
+      });
+      answerList.appendChild(answerElement);
+    }
+  }
 
-	// Funktion zum Auswerten der Antwort
-	function evaluateAnswer(selectedAnswer, correctAnswer) {
-	  const feedbackElement = document.getElementById("feedback");
+  // Funktion zum Auswerten der Antwort
+  function evaluateAnswer(selectedAnswer, correctAnswer) {
+    const feedbackElement = document.getElementById("feedback");
 
-	  if (selectedAnswer === correctAnswer) {
-	    document.getElementById("feedback").textContent = "Richtig";
-	  } else {
-	    document.getElementById("feedback").textContent = "Falsch. Die richtige Antwort ist " + correctAnswer;
-	  }
-	}
+    if (selectedAnswer === correctAnswer) {
+      document.getElementById("feedback").textContent = "Richtig";
+    } else {
+      document.getElementById("feedback").textContent = "Falsch. Die richtige Antwort ist " + correctAnswer;
+    }
+  }
 
-	// Event-Listener für "Nächste Frage"-Button
-	document.getElementById("next-question").addEventListener("click", () => {
-	  // ... Code für die Auswertung der aktuellen Frage ...
+  // Funktion zum Starten des Timers
+  function startTimer() {
+    const timerElement = document.getElementById("timer");
+    const interval = setInterval(() => {
+      timeLeft--;
+      timerElement.textContent = "Verbleibende Zeit: " + timeLeft + " Sekunden";
+      if (timeLeft <= 0) {
+        clearInterval(interval);
+        location.reload(); // Seite neu laden
+      }
+    }, 1000); // Intervall: 1 Sekunde
+  }
 
-	  questionCount++;
-	  if (questionCount < maxQuestions) {
-	    currentQuestionIndex++;
-	    showQuestion(getRandomQuestion());
-	    document.getElementById("feedback").textContent = ""; // Feedback nach Beantwortung der Frage zurücksetzen
-	  } else {
-	    // Quiz beenden
-	    // ... Code für die Anzeige des Ergebnisses einfügen ...
-			location.reload();
-	  }
-	});
+  // Event-Listener für "Nächste Frage"-Button
+  document.getElementById("next-question").addEventListener("click", () => {
+    // ... Code für die Auswertung der aktuellen Frage ...
 
-	// Start mit erster Frage
-	showQuestion(getRandomQuestion());
+    questionCount++;
+    if (questionCount < maxQuestions) {
+      currentQuestionIndex++;
+      showQuestion(getRandomQuestion());
+      document.getElementById("feedback").textContent = ""; // Feedback nach Beantwortung der Frage zurücksetzen
+    } else {
+      // Quiz beenden
+      // ... Code für die Anzeige des Ergebnisses einfügen ...
+      location.reload();
+    }
+  });
+
+  // Start mit erster Frage und Timer
+
 
   </script>
 

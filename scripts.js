@@ -1,17 +1,3 @@
-<script>
-function toggleDivs() {
-  const mainMenu = document.getElementById("main-menu");
-  const quiz = document.getElementById("quiz");
-
-  // Main-Menu ausblenden
-  mainMenu.style.visibility = "hidden";
-
-  // Quiz einblenden
-  quiz.style.visibility = "visible";
-}
-</script>
-
-<script>
 // Array mit Fragen und Antworten
 const questions = [
   {
@@ -99,5 +85,3 @@ document.getElementById("next-question").addEventListener("click", () => {
 
 // Start mit erster Frage
 showQuestion(getRandomQuestion());
-
-</script>

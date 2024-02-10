@@ -42,8 +42,48 @@ body {
   }
 
 #streak {
-	font-size: 15vw;
+	font-size: 3vw;
 }
+
+#LocationValue {
+	position: absolute;
+	top: 4vw;
+	left: 12vw;
+	font-size: 5vw;
+	text-align: left;
+}
+
+#LocationImage {
+	position: absolute;
+	top: 4vw;
+	left: 4vw;
+	font-size: 5vw;
+	height: 6vw;
+	width: 6vw;
+	text-align: left;
+}
+
+#WalkingPeople {
+	position: absolute;
+	top: 10vw;
+	left: 0vw;
+	text-align: left;
+}
+
+#Greeting {
+	position: absolute;
+	top: 15vw;
+}
+
+#StreakValue {
+	position: absolute;
+	top: 3vw;
+	right: 4vw;
+	font-size: 5vw;
+	text-align: right;
+}
+
+
 
 .calendar-wrapper {
 
@@ -83,6 +123,8 @@ li {
 #startBtn {
 	margin: 10vw;
 	font-size: 5vw;
+	position: absolute;
+	top: 50%;
 }
 
 #UserName {
@@ -97,6 +139,9 @@ li {
     animation-timing-function: ease-in-out;
     margin-left: 30px;
     margin-top: 5px;
+		position: absolute;
+		top: 65%;
+		left: 45%;
 }
 
 @keyframes floating {
@@ -244,64 +289,23 @@ li {
 }
 
 </style>
-<Alert id="Alert">
-	<center>
-		🚨 Derzeit ist die Anwendung nur für Smartphones ausgelegt.
-</center>
-</Alert>
+
 <body>
 	<div id="main-menu">
 <container id="statusbar">
 <a id="streak">
-	<center>
-		<br>
-		🔥 <strong><b id="Streak.Value">1</b></strong>
-</a>
+	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Wappen_Lahn-Dill-Kreis.svg/1200px-Wappen_Lahn-Dill-Kreis.svg.png" id="LocationImage"><b id="LocationValue">Lahn-Dill-Kreis</b>
+	<strong><b id="StreakValue">🔥 1</b></strong>
+	</a>
 </container>
+
 <br>
-<div class="calendar-wrapper">
-	<br>
-<strong>
-  <ol class="calendar">
+<center>
 
-
-    <li class="first-day" style="color: white;">1</li>
-
-    <li style="color: white;">2</li>
-    <li style="color: white;">3</li>
-    <li style="color: white;">4</li>
-    <li style="color: white;">5</li>
-    <li style="color: white;">6</li>
-    <li style="color: white;">7</li>
-    <li style="color: white;">8</li>
-    <li style="color: white;">9</li>
-    <li style="color: white;">10</li>
-    <li style="color: white;">11</li>
-    <li style="color: white;">12</li>
-    <li style="color: white;">13</li>
-    <li style="color: white;">14</li>
-    <li style="color: white;">15</li>
-    <li style="color: white;">16</li>
-    <li>17</li>
-    <li>18</li>
-    <li>19</li>
-    <li>20</li>
-    <li>21</li>
-    <li>22</li>
-    <li>23</li>
-    <li>24</li>
-    <li>25</li>
-    <li>26</li>
-    <li>27</li>
-    <li>28</li>
-    <li>29</li>
-    <li>30</li>
-    <li>31</li>
-  </ol>
-</div>
-<br>
-<div id="startBtn">Guten Tag <a id="UserName">Sinikka.</a><br>Schön, dass du da bist! Pushe deinen Streak<br></a></div><div onclick="toggleDivs()" class="floating">➜</div>
+	<div id="startBtn">Guten Tag <a id="UserName">Sinikka.</a><br>Schön, dass du da bist! Pushe deinen Streak<br></a></div><div onclick="toggleDivs()" class="floating">➜</div></center>
+	<img id="WalkingPeople" src="https://assets-global.website-files.com/5bff8886c3964a992e90d465/5c008e76d9549d314c15add6_example-tattoo-p-1600.png"></img>
 </strong>
+
 </div>
 <div id="quiz">
   <h1>Quiz</h1>

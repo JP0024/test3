@@ -15,6 +15,7 @@ function toggleDivs() {
 
   // Main-Menu ausblenden
   mainMenu.style.visibility = "hidden";
+	canvas.style.visibility = "hidden";
 
   // Quiz einblenden
   quiz.style.visibility = "visible";
@@ -405,7 +406,7 @@ body {
 </style>
 
 <body>
-	<div class="canvas">
+	<div id="canvas" class="canvas">
 	  <div class="circles">
 	    <div class="circle research"></div>
 			<div class="circle design"></div>

@@ -7,38 +7,7 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=M+PLUS+1p">
 </head>
 
-<script>
-window.onload = function() {
-  // Funktion zum Abrufen der Bildschirmgröße
-  function getViewportSize() {
-    const width = Math.max(
-      document.documentElement.clientWidth,
-      window.innerWidth || 0
-    );
-    const height = Math.max(
-      document.documentElement.clientHeight,
-      window.innerHeight || 0
-    );
-    return { width, height };
-  }
 
-  // Bildschirmgröße abrufen
-  const { width, height } = getViewportSize();
-
-  // Prüfen, ob der Bildschirm größer als ein Handy ist (z. B. 768px Breite)
-  const isLargerThanMobile = width >= 768;
-
-  // Overflow-Eigenschaft festlegen
-  if (isLargerThanMobile) {
-    document.body.style.overflow = "visible";
-		document.body.style.visibility = "hidden";
-		alert("Der Bildschirm ist groß!");
-  } else {
-    document.body.style.overflow = "hidden";
-  }
-};
-
-</script>
 <script>
 function toggleDivs() {
   const mainMenu = document.getElementById("main-menu");

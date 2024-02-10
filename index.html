@@ -5,51 +5,54 @@
 	<title>App</title>
 	<meta name="description" content="Kurzbeschreibung">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=M+PLUS+1p">
+<script>
+	(function() {
+	  // Funktion zum Abrufen des Cookies
+	  function getCookie(name) {
+	    const matches = document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`));
+	    return matches ? decodeURIComponent(matches[1]) : null;
+	  }
+
+	  // Funktion zum Setzen des Cookies
+	  function setCookie(name, value, days) {
+	    const expires = days ? `; expires=${new Date(Date.now() + days * 86400000).toUTCString()}` : "";
+	    document.cookie = `${name}=${encodeURIComponent(value)}${expires}; path=/`;
+	  }
+
+	  // Aktuelles Datum
+	  const today = new Date().toLocaleDateString();
+
+	  // Streak-Cookie auslesen
+	  const streak = getCookie("Streak");
+	  const streakDate = getCookie("StreakDate");
+
+	  // Wenn kein Streak-Cookie vorhanden ist
+	  if (!streak) {
+	    // Cookie mit heutigem Datum und Streak-Wert 1 setzen
+	    setCookie("Streak", 1, 1); // 1 Tag Gültigkeit
+	    setCookie("StreakDate", today, 1); // 1 Tag Gültigkeit
+
+	    // Streak-Wert im HTML-Element anzeigen
+	    document.getElementById("StreakValue").textContent = 1;
+	  } else {
+	    // Wenn das Datum im Cookie nicht heute ist
+	    if (streakDate !== today) {
+	      // Cookie mit heutigem Datum und aktualisiertem Streak-Wert setzen
+	      setCookie("Streak", parseInt(streak) + 1, 1); // 1 Tag Gültigkeit
+	      setCookie("StreakDate", today, 1); // 1 Tag Gültigkeit
+
+	      // Streak-Wert im HTML-Element anzeigen
+	      document.getElementById("StreakValue").textContent = parseInt(streak) + 1;
+	    } else {
+	      // Streak-Wert im HTML-Element anzeigen
+	      document.getElementById("StreakValue").textContent = streak;
+	    }
+	  }
+	})();
+</script>
 </head>
 <script>
-(function() {
-  // Funktion zum Abrufen des Cookies
-  function getCookie(name) {
-    const matches = document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`));
-    return matches ? decodeURIComponent(matches[1]) : null;
-  }
 
-  // Funktion zum Setzen des Cookies
-  function setCookie(name, value, days) {
-    const expires = days ? `; expires=${new Date(Date.now() + days * 86400000).toUTCString()}` : "";
-    document.cookie = `${name}=${encodeURIComponent(value)}${expires}; path=/`;
-  }
-
-  // Aktuelles Datum
-  const today = new Date().toLocaleDateString();
-
-  // Streak-Cookie auslesen
-  const streak = getCookie("Streak");
-  const streakDate = getCookie("StreakDate");
-
-  // Wenn kein Streak-Cookie vorhanden ist
-  if (!streak) {
-    // Cookie mit heutigem Datum und Streak-Wert 1 setzen
-    setCookie("Streak", 1, 1); // 1 Tag Gültigkeit
-    setCookie("StreakDate", today, 1); // 1 Tag Gültigkeit
-
-    // Streak-Wert im HTML-Element anzeigen
-    document.getElementById("StreakValue").textContent = 1;
-  } else {
-    // Wenn das Datum im Cookie nicht heute ist
-    if (streakDate !== today) {
-      // Cookie mit heutigem Datum und aktualisiertem Streak-Wert setzen
-      setCookie("Streak", parseInt(streak) + 1, 1); // 1 Tag Gültigkeit
-      setCookie("StreakDate", today, 1); // 1 Tag Gültigkeit
-
-      // Streak-Wert im HTML-Element anzeigen
-      document.getElementById("StreakValue").textContent = parseInt(streak) + 1;
-    } else {
-      // Streak-Wert im HTML-Element anzeigen
-      document.getElementById("StreakValue").textContent = streak;
-    }
-  }
-})();
 
 </script>
 

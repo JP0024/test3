@@ -5,56 +5,8 @@
 	<title>App</title>
 	<meta name="description" content="Kurzbeschreibung">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=M+PLUS+1p">
-<script>
-	(function() {
-	  // Funktion zum Abrufen des Cookies
-	  function getCookie(name) {
-	    const matches = document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`));
-	    return matches ? decodeURIComponent(matches[1]) : null;
-	  }
-
-	  // Funktion zum Setzen des Cookies
-	  function setCookie(name, value, days) {
-	    const expires = days ? `; expires=${new Date(Date.now() + days * 86400000).toUTCString()}` : "";
-	    document.cookie = `${name}=${encodeURIComponent(value)}${expires}; path=/`;
-	  }
-
-	  // Aktuelles Datum
-	  const today = new Date().toLocaleDateString();
-
-	  // Streak-Cookie auslesen
-	  const streak = getCookie("Streak");
-	  const streakDate = getCookie("StreakDate");
-
-	  // Wenn kein Streak-Cookie vorhanden ist
-	  if (!streak) {
-	    // Cookie mit heutigem Datum und Streak-Wert 1 setzen
-	    setCookie("Streak", 1, 1); // 1 Tag Gültigkeit
-	    setCookie("StreakDate", today, 1); // 1 Tag Gültigkeit
-
-	    // Streak-Wert im HTML-Element anzeigen
-	    document.getElementById("StreakValue").textContent = 1;
-	  } else {
-	    // Wenn das Datum im Cookie nicht heute ist
-	    if (streakDate !== today) {
-	      // Cookie mit heutigem Datum und aktualisiertem Streak-Wert setzen
-	      setCookie("Streak", parseInt(streak) + 1, 1); // 1 Tag Gültigkeit
-	      setCookie("StreakDate", today, 1); // 1 Tag Gültigkeit
-
-	      // Streak-Wert im HTML-Element anzeigen
-	      document.getElementById("StreakValue").textContent = parseInt(streak) + 1;
-	    } else {
-	      // Streak-Wert im HTML-Element anzeigen
-	      document.getElementById("StreakValue").textContent = streak;
-	    }
-	  }
-	})();
-</script>
 </head>
-<script>
 
-
-</script>
 
 <script>
 function toggleDivs() {
@@ -105,7 +57,7 @@ body {
 	top: 4vw;
 	left: 4vw;
 	font-size: 5vw;
-	height: 6.5vw;
+	height: 6vw;
 	width: 6vw;
 	text-align: left;
 }
@@ -348,7 +300,7 @@ li {
 
 <container id="statusbar">
 <a id="streak">
-	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Coat_of_arms_of_Hesse.svg/1699px-Coat_of_arms_of_Hesse.svg.png" id="LocationImage"><b id="LocationValue">Hessen</b>
+	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Wappen_Lahn-Dill-Kreis.svg/1200px-Wappen_Lahn-Dill-Kreis.svg.png" id="LocationImage"><b id="LocationValue">Lahn-Dill-Kreis</b>
 	<strong><b id="StreakValue">🔥 1</b></strong>
 	</a>
 </container>
@@ -356,7 +308,7 @@ li {
 <br>
 <center>
 
-	<div id="startBtn">Guten Tag <a id="UserName">lieber Retter</a><br>Schön, dass du da bist!<br>Es ist Zeit zu üben<br></a></div><div onclick="toggleDivs()" class="floating">➜</div></center>
+	<div id="startBtn">Guten Tag <a id="UserName">Sinikka.</a><br>Schön, dass du da bist!<br>Es ist Zeit zu üben<br></a></div><div onclick="toggleDivs()" class="floating">➜</div></center>
 	<img id="WalkingPeople" src="https://assets-global.website-files.com/5bff8886c3964a992e90d465/5c008e76d9549d314c15add6_example-tattoo-p-1600.png"></img>
 </strong>
 
